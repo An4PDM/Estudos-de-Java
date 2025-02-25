@@ -52,17 +52,27 @@ public class Contribuinte {
         return salario;
     }
     
+    public double getIrpf () {
+        return irpf;
+    }
+    
     // Cálculo do irpf
     public void calcularIrpf () {
-        if (salario <= 900) {
+        if (salario <= 1058) {
             irpf = 0;
         }
-        else if (salario <= 1800) {
-            irpf = salario * 0.1;
-        }
-        else {
+        else if (salario <= 2100) {
             irpf = salario * 0.15;
         }
+        else {
+            irpf = salario * 0.275;
+        }
+    }
+    
+
+    // Salario liquido
+    public double getSalarioLiquido () {
+        return salario - irpf;
     }
     
     // Método imprimir
@@ -72,6 +82,9 @@ public class Contribuinte {
         System.out.println("Endereco: " + endereco);
         System.out.println("Salario: " + salario);
         System.out.println("IRPF: " + irpf);
+        System.out.println("Salario Liquido: " + getSalarioLiquido());
+        
     }
+    
     
 }
